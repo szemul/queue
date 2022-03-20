@@ -11,7 +11,7 @@ class Message implements MessageInterface
     public function __construct(
         protected string $jobName,
         protected array $payload,
-        protected ?string $queueIdentifier = null
+        protected ?string $queueIdentifier = null,
     ) {
     }
 
