@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Szemul\Queue\Message;
 
+use Carbon\CarbonInterface;
+
 class Message implements MessageInterface
 {
     /**
@@ -11,6 +13,7 @@ class Message implements MessageInterface
     public function __construct(
         protected string $jobName,
         protected array $payload,
+        protected CarbonInterface $createdAt,
         protected ?string $queueIdentifier = null,
     ) {
     }
@@ -35,5 +38,10 @@ class Message implements MessageInterface
         $this->queueIdentifier = $identifier;
 
         return $this;
+    }
+
+    public function getCreatedAt(): CarbonInterface
+    {
+        return $this->createdAt;
     }
 }
